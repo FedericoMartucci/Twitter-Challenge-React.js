@@ -2,11 +2,12 @@ import { ChangeEvent, useRef, useState } from "react";
 import { StyledInputContainer } from "../labeled-input/InputContainer";
 import { CustomInputType, StyledCustomInput } from "./StyledCustomInput";
 import { StyledCustomInputTitle } from "./CustomInputTitle";
+import { StyledCustomInputContainer } from "./CustomInputContainer";
 
 interface CustomInputProps {
   value?: string;
   type?: "password" | "text";
-  title: string;
+  title?: string;
   placeholder: string;
   required: boolean;
   error?: boolean;
@@ -16,7 +17,7 @@ interface CustomInputProps {
 
 const CustomInput = ({
   value = '',
-  title,
+  title = '',
   placeholder,
   required,
   error,
@@ -42,16 +43,20 @@ const CustomInput = ({
   };
 
   return (
-    <StyledInputContainer
+    <StyledCustomInputContainer
       className={`${error ? "error" : ""}`}
+      
       onClick={handleClick}
     >
-      <StyledCustomInputTitle
-        className={`${focus ? "active-label" : ""} ${error ? "error" : ""}`}
-        size={size}
-      >
-        {title}
-      </StyledCustomInputTitle>
+      {
+        title === '' &&
+          <StyledCustomInputTitle
+          className={`${focus ? "active-label" : ""} ${error ? "error" : ""}`}
+          size={size}
+          >
+            {title}
+          </StyledCustomInputTitle>
+      }
       <StyledCustomInput
         customInputType={CustomInputType.FULFILLED}
         value={value}
@@ -64,7 +69,7 @@ const CustomInput = ({
         className={error ? "error" : ""}
         ref={inputRef}
       />
-    </StyledInputContainer>
+    </StyledCustomInputContainer>
   );
 };
 

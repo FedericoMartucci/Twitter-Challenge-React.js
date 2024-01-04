@@ -23,7 +23,8 @@
     "delete": "Delete",
     "unfollow": "Unfollow",
     "cancel": "Cancel",
-    "logout": "Log out"
+    "logout": "Log out",
+    "chat": "Chat"
   },
   "placeholder": {
     "new-chat": "Start a new chat",
@@ -43,7 +44,9 @@
     "password": "Password",
     "email": "Email",
     "name": "Name",
-    "confirm-password": "Confirm password"
+    "confirm-password": "Confirm password",
+    "message": "Message",
+    "message-box": "Write a message"   
   },
   "modal-title": {
     "delete-post": "Delete tweet",

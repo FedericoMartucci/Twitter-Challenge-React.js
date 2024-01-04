@@ -25,12 +25,13 @@
     "delete": "Eliminar",
     "unfollow": "Dejar de seguir",
     "cancel": "Cancelar",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "chat": "Chat"
   },
   "placeholder": {
     "new-chat": "Comenzar un nuevo chat",
     "search": "Buscar en twitter",
-    "tweet": "¡¿Que está pasando?!",
+    "tweet": "¡¿Qué está pasando?!",
     "send": "Envíar un nuevo mensaje",
     "comment": "Escribe tu respuesta"
   },
@@ -45,7 +46,9 @@
     "password": "Contraseña",
     "email": "Email",
     "name": "Nombre",
-    "confirm-password": "Confirmar constraseña"
+    "confirm-password": "Confirmar constraseña",
+    "message": "Mensaje",
+    "message-box": "Escribe un mensaje"
   },
   "modal-title": {
     "delete-post": "Eliminar tweet",

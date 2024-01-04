@@ -51,19 +51,18 @@ const SignInPage = () => {
             <StyledH3>{t("title.login")}</StyledH3>
           </div>
           <div className={"input-container"}>
-            <CustomInput
+            <LabeledInput
               required
               placeholder={"Enter email..."}
               title={t("input-params.email")}
               error={error}
               onChange={formik.handleChange("email")}
               value={formik.values.email}
-              size={"MEDIUM"}
             />
             {formik.touched.email && formik.errors.email && (
                 <p className={"error-message"}>{formik.errors.email}</p>
             )}
-            <CustomInput
+            <LabeledInput
               type="password"
               required
               placeholder={"Enter password..."}
@@ -71,7 +70,6 @@ const SignInPage = () => {
               error={error}
               onChange={formik.handleChange("password")}
               value={formik.values.password}
-              size={"LARGE"}
             />
             {formik.touched.password && formik.errors.password && (
                 <p className={"error-message"}>{formik.errors.password}</p>

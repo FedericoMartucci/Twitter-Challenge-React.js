@@ -18,3 +18,9 @@ export const removeLoginCookie = (): void => {
     cookies.remove('jwt');
     cookies.remove('isLogged');
 }
+
+export const getToken = (): string => {
+    const jwt = cookies.get('jwt');
+
+    return jwt;
+}

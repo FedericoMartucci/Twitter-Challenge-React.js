@@ -51,8 +51,9 @@ const LogoutPrompt = ({ show }: LogoutPromptProps) => {
     <>
       {showPrompt && (
         <StyledPromptContainer>
-          <div ref={ref}>
+          <div ref={ref} style={{width: "70%", display: "flex", gap: "16px", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
               <StyledContainer
+                width={"100%"}
                 flexDirection={"row"}
                 gap={"16px"}
                 borderBottom={"1px solid #ebeef0"}
@@ -60,11 +61,22 @@ const LogoutPrompt = ({ show }: LogoutPromptProps) => {
                 alignItems={"center"}
                 justifyContent={"center"}
                 >
-                <StyledP primary>Es:</StyledP>
-                <SwitchButton
-                  checked={i18n.language === "es"}
-                  onChange={handleLanguageChange}
-                  />
+                  <StyledContainer
+                  width={"50%"}
+                  textAlign="center">
+                    <StyledP primary>Spanish:</StyledP>
+                  </StyledContainer>
+                  <StyledContainer
+                  width={"50%"}
+                  display={"flex"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  height={"30px"}>
+                    <SwitchButton
+                      checked={i18n.language === "es"}
+                      onChange={handleLanguageChange}
+                      />
+                  </StyledContainer>
               </StyledContainer>
               <StyledContainer onClick={handleClick} alignItems={"center"}>
                 <StyledP primary>{`${t("buttons.logout")} @${

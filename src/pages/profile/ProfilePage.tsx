@@ -18,6 +18,7 @@ import CustomSwitchButton from "../../components/switch/CustomSwitchButton";
 const ProfilePage = () => {
   const [profile, setProfile] = useState<User | null>(null);
   const [following, setFollowing] = useState<boolean>(false);
+  const [follower, setFollower] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalValues, setModalValues] = useState({
     text: "",
@@ -101,13 +102,18 @@ const ProfilePage = () => {
             ? res?.followers.some((follow: Follow) => follow.followerId === user.id)
             : false
         );
+        setFollower(
+          res? res?.follows.some((follow: Follow) => follow.followedId === user.id) : false
+        )
       })
       .catch(() => {
+        console.log("hubo un error")
         service
           .getProfileView(id)
           .then((res) => {
             setProfile(res);
             setFollowing(false);
+            setFollower(false);
           })
           .catch((error2) => {
             console.log(error2);
@@ -125,6 +131,7 @@ const ProfilePage = () => {
         console.log(error);
       });
   };
+
   return (
     <>
       <StyledContainer
@@ -163,17 +170,31 @@ const ProfilePage = () => {
                   username={profile!.username}
                   profilePicture={profile!.profilePicture}
                 />
-                <Button
-                  buttonType={handleButtonType().component}
-                  size={"100px"}
-                  onClick={handleButtonAction}
-                  text={handleButtonType().text}
-                />
+                <StyledContainer
+                  width={"30%"}
+                  alignItems={"center"}
+                  justifyContent={"center"}>
+                  <Button
+                    buttonType={handleButtonType().component}
+                    size={"100px"}
+                    onClick={handleButtonAction}
+                    text={handleButtonType().text}
+                    />
+                  {
+                    following && follower &&
+                    <Button
+                    buttonType={ButtonType.DEFAULT}
+                    size={"100px"}
+                    onClick={() => navigate(`/chat/${profile.id}`, {state: profile})}
+                    text={t("buttons.chat")}
+                    />
+                  }
+                  </StyledContainer>
                 
               </StyledContainer>
             </StyledContainer>
             <StyledContainer width={"100%"}>
-              {!profile.isPrivate || profile.followers.find((follows) => follows.followerId === id) || profile.id === user.id ? (
+              {!profile.isPrivate || following || profile.id === user.id ? (
                 <ProfileFeed />
               ) : (
                 <StyledH5>{t("error.private-account")}</StyledH5>

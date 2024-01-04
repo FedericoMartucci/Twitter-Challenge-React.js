@@ -14,7 +14,7 @@ export const StyledPromptContainer = styled.div`
   border-radius: 16px;
   border: 1px solid ${(props) => props.theme.colors.containerLine};
   position: fixed;
-  top: 80%;
+  top: 70%;
   left: 5%;
   z-index: 2;
   transition: 0.3s ease-in-out;

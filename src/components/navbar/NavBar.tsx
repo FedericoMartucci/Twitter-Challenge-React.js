@@ -63,14 +63,6 @@ const NavBar = () => {
             selectedIcon={IconType.ACTIVE_PROFILE}
             active={location.pathname === `/profile/${user.id}`}
           />
-          <StyledTweetButton
-            onClick={() =>
-              window.innerWidth > 600
-                ? setTweetModalOpen(true)
-                : navigate("/compose/tweet")
-            }
-          >
-          </StyledTweetButton>
         </StyledNavItemsContainer>
         <StyledContainer width={"100%"}>
           <Button
@@ -94,6 +86,7 @@ const NavBar = () => {
           } 
       </StyledContainer>
       <StyledContainer
+        width={"auto"}
         position={"fixed"}
         top={"93%"}
         left={"9%"}
@@ -114,17 +107,17 @@ const NavBar = () => {
           alt={user?.name ?? ""}
         />
         <StyledContainer
-          width={"12%"}
+          width={"100%"}
           flexDirection={"row"}
           justifyContent={"space-between"}
           alignItems={"center"}
-          gap={"64px"} >
-          <StyledContainer padding={"4px 0"} gap={"4px"}>
-            <StyledP primary>{user.name}</StyledP>
-            <StyledP primary={false}>{`@${user.username}`}</StyledP>
-          </StyledContainer>
-          <ThreeDots onClick={handleLogout} />
-      </StyledContainer>
+          gap={"16px"} >
+            <StyledContainer padding={"4px 0"} gap={"4px"}>
+              <StyledP primary>{user.name}</StyledP>
+              <StyledP primary={false}>{`@${user.username}`}</StyledP>
+            </StyledContainer>
+            <ThreeDots onClick={handleLogout} />
+        </StyledContainer>
       </StyledContainer>
     </StyledNavBarContainer>
   );

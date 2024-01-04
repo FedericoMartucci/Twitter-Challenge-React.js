@@ -11,6 +11,7 @@ export const LightTheme: Partial<Theme> = {
     inactiveBackground: "#F0F3F4",
     containerLine: "#F0F3F4",
     hover: "#E7E7E8",
+    chat: "#EDF0F1",
     outline: "#D1D9DD",
     text: "#566370",
     black: "#000000",
@@ -54,6 +55,7 @@ export type Theme = {
     inactiveBackground: string;
     containerLine: string;
     hover: string;
+    chat: string;
     outline: string;
     text: string;
     black: string;
