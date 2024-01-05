@@ -128,7 +128,7 @@ const SignUpPage = () => {
                 <p className={"error-message"}>{error && t("error.signup")}</p>
             )}
           </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             <CustomButton
               type={"submit"}
               text={t("buttons.register")}

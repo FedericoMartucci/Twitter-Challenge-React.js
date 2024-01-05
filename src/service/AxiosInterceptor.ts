@@ -31,7 +31,6 @@ const onResponseError = (error: AxiosError): Promise<AxiosError> => {
         removeLoginCookie();
         window.location.href = "/sign-in";
     }
-    
     console.error(`Response error: ${JSON.stringify(error)}`);
 
     return Promise.reject(error);

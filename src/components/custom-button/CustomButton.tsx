@@ -1,5 +1,6 @@
 import { MouseEventHandler } from "react";
 import { CustomButtonType, StyledCustomButton } from "./StyledCustomButton";
+import { ReactComponent as SendIcon } from "../../assets/send.svg";
 
 interface CustomButtonProps {
   text: string;
@@ -13,11 +14,11 @@ const CustomButton = ({ text, size, customButtonType, onClick, disabled }: Custo
   return (
     <StyledCustomButton
       size={size}
-      customButtonType={disabled ? CustomButtonType.OUTLINED : customButtonType}
-      disabled={customButtonType === "OUTLINED" || (disabled ? disabled : false)}
+      customButtonType={disabled ? CustomButtonType.DISABLED : customButtonType}
+      disabled={customButtonType === "DISABLED" || (disabled ? disabled : false)}
       onClick={onClick}
     >
-      {text}
+      {text === 'send-message'? <SendIcon/> : text}
     </StyledCustomButton>
   );
 };

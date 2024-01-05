@@ -12,7 +12,7 @@ export const StyledNavBarContainer = styled.div`
   box-sizing: border-box;
   z-index: 2;
 
-  @media (max-width: 1265px) {
+  @media (max-width: 600px) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;

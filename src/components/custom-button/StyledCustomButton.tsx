@@ -10,6 +10,7 @@ export enum CustomButtonType {
   FULFILLED = "FULFILLED",
   GHOST = "GHOST",
   WHITE = "WHITE",
+  DISABLED = "DISABLED"
 }
 export const StyledCustomButton = styled.button<CustomButtonProps>`
     display: flex;
@@ -17,7 +18,6 @@ export const StyledCustomButton = styled.button<CustomButtonProps>`
     justify-content: center;
     padding: 8px 16px;
     gap: 8px;
-    margin-bottom: 8px;
     width: ${(props) => {
       switch(props.size) {
         case "SMALL":
@@ -44,6 +44,8 @@ export const StyledCustomButton = styled.button<CustomButtonProps>`
           return props.theme.colors.dark;
         case "WHITE":
           return props.theme.colors.white;
+        case "DISABLED":
+          return props.theme.colors.gray;
         default:
           return props.theme.colors.main;
       }

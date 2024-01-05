@@ -50,7 +50,7 @@ const FollowUserBox = ({
         isFollowing={isFollowing}
         text={isFollowing ? t("buttons.unfollow") : t("buttons.follow")}
         buttonType={isFollowing ? ButtonType.DELETE : ButtonType.FOLLOW}
-        size={"MEDIUM"}
+        size={"LARGE"}
         onClick={handleFollow}
       />
     </StyledFollowUserBox>

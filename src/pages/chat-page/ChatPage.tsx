@@ -13,6 +13,10 @@ import Icon from "../../assets/icon.jpg";
 import { LightTheme } from '../../util/LightTheme';
 import { t } from 'i18next';
 import { ReactComponent as SendIcon } from "../../assets/send.svg";
+import CustomButton from '../../components/custom-button/CustomButton';
+import Button from '../../components/button/Button';
+import { ButtonType } from '../../components/button/StyledButton';
+import { CustomButtonType } from '../../components/custom-button/StyledCustomButton';
 
 interface Message {
     text: string;
@@ -34,10 +38,14 @@ const ChatPage = () => {
     const socket = io(`http://localhost:8080`, {
         query: {
             token: token,
+            receiverId: receiverId,
         }
     })
 
     useEffect(() => {
+        socket.on('loadOldMessages', (messages) => {
+            setMessages(messages);
+        })
         socket.on('newMessage', (message) => {
             !messages.includes(message) && setMessages((messages) => [...messages, message]);
         });
@@ -56,6 +64,8 @@ const ChatPage = () => {
         }
     }
 
+
+    console.log(messages)
     return (
         <StyledContainer 
         minHeight={"100vh"}
@@ -78,6 +88,7 @@ const ChatPage = () => {
             <StyledContainer
             height={"70%"}
             width={"100%"}
+            overflowY={"auto"}
             gap={"8px"}
             >
                 {
@@ -120,8 +131,9 @@ const ChatPage = () => {
                     margin={"5px"}
                     backgroundColor={`${LightTheme!.colors!.chat}`}
                     borderRadius={"32px"}
-                    justifyContent={"center"}
-                    alignItems={"center"}>
+                    justifyContent={"space-between"}
+                    alignItems={"center"}
+                    padding={"8px"}>
                         <CustomInput
                         type="text"
                         required
@@ -130,9 +142,16 @@ const ChatPage = () => {
                         onChange={(e) => setMessage(e.target.value)}
                         size={"SMALL"}
                         />
-                        <SendIcon
-                        onClick={(e) => handleSubmit(e)}
-                        />
+                            <CustomButton
+                                text={"send-message"}
+                                customButtonType={CustomButtonType.WHITE}
+                                size={"MEDIUM"}
+                                onClick={handleSubmit}
+                                disabled={
+                                    message.length <= 0 ||
+                                    message.length > 240
+                                }
+                            ></CustomButton>
                     </StyledContainer>
                 </form>
             </StyledContainer>

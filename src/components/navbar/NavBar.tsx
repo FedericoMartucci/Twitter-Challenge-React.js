@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import NavItem from "./navItem/NavItem";
 import Button from "../button/Button";
 import { useLocation, useNavigate } from "react-router-dom";
-import { StyledTweetButton } from "../tweet-button/StyledTweetButton";
 import TweetModal from "../tweet-modal/TweetModal";
 import { IconType, LogoIcon } from "../icon/Icon";
 import Avatar from "../common/avatar/Avatar";

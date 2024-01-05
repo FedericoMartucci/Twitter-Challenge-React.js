@@ -42,7 +42,7 @@ const httpRequestService = {
   },
   getPaginatedPosts: async (limit: number, after: string, query: string) => {
     try {
-      const res = await axios.get(`${url}/post`, {
+      const res = await axios.get(`${url}/post/${query}`, {
         params: {
           limit,
           after,
